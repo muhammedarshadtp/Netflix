@@ -1,3 +1,4 @@
+import Body from "./Components/Body"
 
 
 
@@ -5,9 +6,7 @@ function App() {
 
   return (
     <>
-     <div>
-      Heloo Arshad
-     </div>
+     <Body/>
       
     </>
   )

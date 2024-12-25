@@ -1,11 +1,27 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Home from "./Home";
+import { CheckValidation } from "../utils/Validation";
 
 const Login = () => {
 
-    const [signInForm,setSignInForm]=useState(true)
+    const [signInForm, setSignInForm] = useState(true)
+    const [errorMessege, setErrorMessege] = useState(null)
 
-    const toggleSignInForm=()=>{
+    const name = useRef(null)
+    const email = useRef(null)
+    const password = useRef(null)
+
+    const handleButtonClick = () => {
+        const Messege = CheckValidation(
+            email.current.value,
+            password.current.value,
+            name.current ? name.current.value : "",
+            !signInForm
+        )
+        setErrorMessege(Messege)
+    }
+
+    const toggleSignInForm = () => {
         setSignInForm(!signInForm)
     }
 
@@ -14,35 +30,40 @@ const Login = () => {
             <div className="absolute w-full h-full bg-black bg-opacity-50"> {/* Overlay */}
                 <Home />
             </div>
-            <form className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[450px] h-[650px] bg-black bg-opacity-80 p-16 rounded-md z-20">
-                <h1 className="font-bold text-3xl py-3 text-white">{!signInForm ? "Sign In" : "Sign Up" }</h1>
+            <form onSubmit={(e) => e.preventDefault()} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[450px] h-[650px] bg-black bg-opacity-80 p-16 rounded-md z-20">
+                <h1 className="font-bold text-3xl py-3 text-white">{!signInForm ? "Sign Up" :  "Sign In"}</h1>
                 {!signInForm && (
                     <input
-                    type="name"
-                    placeholder="Name"
-                    className="p-3 my-4 w-full text-white rounded-md outline-none"
-                />
+                        ref={name}
+                        type="name"
+                        placeholder="Name"
+                        className="p-3 my-4 w-full rounded-md outline-none"
+                    />
                 )}
                 <input
+                    ref={email}
                     type="email"
                     placeholder="Email or phone number"
-                    className="p-3 my-4 w-full text-white rounded-md outline-none"
+                    className="p-3 my-4 w-full rounded-md outline-none"
                 />
                 <input
+                    ref={password}
                     type="password"
                     placeholder="Password"
-                    className="p-3 my-4 w-full  text-white rounded-md outline-none"
+                    className="p-3 my-4 w-full  rounded-md outline-none"
                 />
-                <button className="w-full py-2 mt-8 bg-red-700 text-white font-semibold rounded-md">
-                    {!signInForm ? "Sign In" : "Sign Up" }
+                <p className="font-bold text-red-500">{errorMessege}</p>
+
+                <button className="w-full py-2 mt-8 bg-red-700 text-white font-semibold rounded-md" onClick={handleButtonClick}>
+                    {!signInForm ? "Sign Up" :  "Sign In"}
                 </button>
-                
-                    
-                    <p className="py-4 text-white  cursor-pointer" onClick={toggleSignInForm}>
-                    {!signInForm ?"New to Netflix?  Sign up now" :"Already Have an Account ? Sign In"}
-                    </p>
-                
-                
+
+
+                <p className="py-4 text-white  cursor-pointer" onClick={toggleSignInForm}>
+                    {!signInForm ? "Already Have an Account ? Sign In" : "New to Netflix?  Sign up now"}
+                </p>
+
+
             </form>
         </div>
     );

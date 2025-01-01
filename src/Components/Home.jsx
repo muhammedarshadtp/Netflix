@@ -7,9 +7,9 @@ import { useState } from "react";
 const Home = () => {
 
     const [loginForm,setLoginForm]=useState(true)
-    const toggleSignForm=()=>{
-        setLoginForm(!loginForm)
-    }
+    // const toggleSignForm=()=>{
+    //     setLoginForm(!loginForm)
+    // }
     return (
             <div className="w-full h-screen">
             <Header />

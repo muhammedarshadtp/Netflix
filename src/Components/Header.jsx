@@ -1,9 +1,10 @@
 import {NETFLIX_HEADER_LOGO, NETFLIX_USER_ICON } from "../utils/Image";
-import { signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import {auth} from '../utils/firebase'
 import { useDispatch } from "react-redux";
-import { removeUser } from "../utils/userSlice";
+import { addUser, removeUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 
 
@@ -13,14 +14,26 @@ const Header = () => {
 
     const handleSignOut=()=>{
         signOut(auth).then(() => {
-            dispatch(removeUser)
-            navigate('/')
+            dispatch(removeUser())
           }).catch((error) => {
             // An error happened.
           });
     }
+    useEffect(()=>{
+      const unsubscribe=  onAuthStateChanged(auth, (user) => {
+            if (user) {
+              const {uid,email,displayName} = user;
+              dispatch(addUser({uid:uid,email:email,displayName:displayName}))
+              navigate('/home')
+            } else {
+             dispatch(removeUser())
+             navigate('/')
+            }
+          });
+          return ()=> unsubscribe()
+    },[])
     return (
-        <div className="flex justify-between items-center w-screen px-8 py-4 m-4 z-10">
+        <div className="flex justify-between items-center w-screen p-3 z-10 bg-black">
         <img className="w-24 " src={NETFLIX_HEADER_LOGO} alt="" />
         <div className="flex ">
             <img className="w-10 " src={NETFLIX_USER_ICON} alt="UserIcon" />

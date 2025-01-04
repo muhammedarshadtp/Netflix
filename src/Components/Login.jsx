@@ -2,9 +2,9 @@ import { useRef, useState } from "react";
 import { CheckValidation } from "../utils/Validation";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth"
 import { auth } from "../utils/firebase"
-import { useNavigate } from "react-router-dom";
 import { NETFLIX_LOGO } from "../utils/Image";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 
@@ -13,7 +13,7 @@ const Login = () => {
 
     const dispatch = useDispatch()
 
-    const navigate = useNavigate()
+ const navigate = useNavigate()
 
     const name = useRef(null)
     const email = useRef(null)
@@ -42,8 +42,6 @@ const Login = () => {
                     }).then(() => {
                         const { uid, email, displayName } = auth.currentUser;
                         dispatch(addUser({ uid: uid, email: email, displayName: displayName }))
-
-                        navigate("/home")
                     }).catch((error) => {
                         setErrorMessege(error)
                     });
@@ -61,8 +59,7 @@ const Login = () => {
             )
                 .then((userCredential) => {
                     const user = userCredential.user;
-                    console.log(user)
-                    navigate("/home")
+                    navigate('/home')
                 })
                 .catch((error) => {
                     const errorCode = error.code;

@@ -11,7 +11,7 @@ const [trailerId,setTrailerId]=useState(null)
             console.log("No trailers found in API response.");
         }
         const filterData = json.results.filter((video) => video.type === "Trailer")
-        const trailer = filterData.length ? filterData[0] : json.results[0]
+        const trailer = filterData.length ? filterData[1] : json.results[0]
         setTrailerId(trailer)
     }
     useEffect(() => {

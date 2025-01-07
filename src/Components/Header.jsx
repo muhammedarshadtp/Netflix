@@ -33,14 +33,29 @@ const Header = () => {
           return ()=> unsubscribe()
     },[])
     return (
-        <div className="flex justify-between items-center w-screen p-4 z-10 bg-gradient-to-b from-black to-white-300 ">
-        <img className="w-24 " src={NETFLIX_HEADER_LOGO} alt="" />
-        <div className="flex ">
-            <img className="w-10 " src={NETFLIX_USER_ICON} alt="UserIcon" />
-            <button onClick={handleSignOut} >sign out</button>
+      <header className="fixed top-0 w-full z-50">
+      <div className="flex justify-between items-center px-8 py-4 bg-gradient-to-b from-black via-black/80 to-transparent">
+        <img 
+          className="w-28 object-contain" 
+          src={NETFLIX_HEADER_LOGO} 
+          alt="Netflix" 
+        />
+        <div className="flex items-center space-x-4">
+          <img 
+            className="w-10 rounded" 
+            src={NETFLIX_USER_ICON} 
+            alt="User" 
+          />
+          <button 
+            onClick={handleSignOut}
+            className="text-white hover:text-gray-300 px-4 py-2 rounded-lg transition-colors"
+          >
+            Sign Out
+          </button>
         </div>
-    </div>
-    ) 
+      </div>
+    </header>
+  );
 }
 
 export default Header;

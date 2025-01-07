@@ -33,7 +33,7 @@ const Header = () => {
           return ()=> unsubscribe()
     },[])
     return (
-        <div className="flex justify-between items-center w-screen p-3 z-10 bg-black">
+        <div className="flex justify-between items-center w-screen p-4 z-10 bg-gradient-to-b from-black to-white-300 ">
         <img className="w-24 " src={NETFLIX_HEADER_LOGO} alt="" />
         <div className="flex ">
             <img className="w-10 " src={NETFLIX_USER_ICON} alt="UserIcon" />

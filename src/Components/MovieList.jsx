@@ -6,7 +6,7 @@ const MovieList = ({title,movies})=>{
         return <p>No movies available.</p>;
     }
     return (
-        <div className="bg-black w-screen">
+        <div className=" w-screen">
             <h1 className="text-2xl font-bold py-2 text-white">{title}</h1> 
             <div className="flex overflow-x-scroll scrollbar-hide">
                 

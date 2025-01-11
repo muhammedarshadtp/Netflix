@@ -1,4 +1,5 @@
 
+import { useSelector } from "react-redux";
 import useMovieList from "../Hooks/useMovieList";
 import usePopularMovie from "../Hooks/usePopularMovie";
 import useTopRatedMovie from "../Hooks/useTopRatedMovie";
@@ -11,18 +12,27 @@ import SeconderyContainer from "./SeconderyContainer";
 
 
 const Home = () => {
+
+    const gptSearchView = useSelector((store) => store.gpt.showGptSearch)
+
     useMovieList()
     usePopularMovie()
     useTopRatedMovie()
     useUpcomingMovie()
     return (
-            <div >
+        <div >
             <Header />
-            <GptSearch/>
-            <MainContainer/>
-            <SeconderyContainer/>
-               
-            </div>
+            {
+                gptSearchView ? <GptSearch /> : <>
+                    <MainContainer />
+                    <SeconderyContainer />
+                </>
+
+            }
+
+
+
+        </div>
     )
 }
 

@@ -1,0 +1,11 @@
+
+
+const GptMovieSuggestion=()=>{
+    return(
+        <div>
+            <h1>Hello</h1>
+        </div>
+    )
+}
+
+export default GptMovieSuggestion;

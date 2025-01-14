@@ -4,7 +4,7 @@ const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-
 const payload = {
   contents: [
     {
-      parts: [{ text: gptQuery }], 
+      parts: [{ text: gptQuery }],  
     },
   ],
 };

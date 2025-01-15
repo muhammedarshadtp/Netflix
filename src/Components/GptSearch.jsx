@@ -5,13 +5,16 @@ import GptSearchBar from "./GptSearchBar";
 
 const GptSearch = () =>{
     return (
-        <div > 
-            <div className="absolute -z-20 "> 
-                            <img src={NETFLIX_LOGO} alt="Header Logo" />
-                        </div>
+        <>
+        <div className="fixed -z-20 "> 
+            <img className="h-screen object-cover" src={NETFLIX_LOGO} alt="Header Logo"/>
+            </div>
+        <div className=""> 
+            
         <GptSearchBar/>
         <GptMovieSuggestion/>
         </div>
+        </>
     )
 }
 

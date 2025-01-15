@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { toggleGptSearchView } from "../utils/gptSlice";
+import { toggleSearchView } from "../utils/geminiSlice";
 import { SUPPORTED_LANGUAGES } from "../utils/supportedLanguages";
 import { changeLangauge } from "../utils/configSlice";
 
@@ -17,7 +17,7 @@ const Header = () => {
 
   const [showLogout, setShowLogout] = useState(false);
 
-  const showLang=useSelector((store)=> store.gpt.showGptSearch)
+  const showLang=useSelector((store)=> store?.gemini?.showSearch)
 
   const handleSignOut = () => {
     signOut(auth).then(() => {
@@ -40,9 +40,9 @@ const Header = () => {
     return () => unsubscribe()
   }, [])
 
-  const handleGptSearchClick = () => {
+  const handleSearchClick = () => {
 
-    dispatch(toggleGptSearchView())
+    dispatch(toggleSearchView())
   }
 
   const handdleLangauges = (e) => {
@@ -71,8 +71,8 @@ const Header = () => {
                ))}
              </select>
           )}
-          <button className="bg-purple-500 py-2 px-2 md:px-4 mx-4 text-white rounded-lg my-2" onClick={handleGptSearchClick}>
-            {showLang ? "HomePage" : "Gpt Search"}</button>
+          <button className="bg-purple-500 py-2 px-2 md:px-4 mx-4 text-white rounded-lg my-2" onClick={handleSearchClick}>
+            {showLang ? "HomePage" : "Gemini Search"}</button>
             <div className="relative">
             <img
               className=" w-10 rounded cursor-pointer"

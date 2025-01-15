@@ -1,4 +1,4 @@
-# Netflix-gpt
+# Netflix
 
  -Create React App
  _Configured Tailwindcss
@@ -16,7 +16,7 @@
         -Title & Description
         -movieSuggestion
             -MovieList * N
--Netflix-gpt
+-Netflix
     -searchBar
     -Movie Suggention
 

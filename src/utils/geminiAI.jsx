@@ -1,10 +1,10 @@
 
-export const geminiAI=async (gptQuery)=>{
+export const geminiAI=async (Query)=>{
 const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${import.meta.env.VITE_GOOGLE_API}`;
 const payload = {
   contents: [
     {
-      parts: [{ text: gptQuery }],  
+      parts: [{ text: Query }],  
     },
   ],
 };

@@ -4,7 +4,7 @@ import useMovieList from "../Hooks/useMovieList";
 import usePopularMovie from "../Hooks/usePopularMovie";
 import useTopRatedMovie from "../Hooks/useTopRatedMovie";
 import useUpcomingMovie from "../Hooks/useUpcomingMovie";
-import GptSearch from "./GptSearch";
+import Search from "./Search";
 import Header from "./Header";
 import MainContainer from "./MainContainer";
 import SeconderyContainer from "./SeconderyContainer";
@@ -13,7 +13,7 @@ import SeconderyContainer from "./SeconderyContainer";
 
 const Home = () => {
 
-    const gptSearchView = useSelector((store) => store.gpt.showGptSearch)
+    const SearchView = useSelector((store) => store?.gemini?.showSearch)
 
     useMovieList()
     usePopularMovie()
@@ -23,7 +23,7 @@ const Home = () => {
         <div >
             <Header />
             {
-                gptSearchView ? <GptSearch /> : <>
+                SearchView ? <Search /> : <>
                     <MainContainer />
                     <SeconderyContainer />
                 </>

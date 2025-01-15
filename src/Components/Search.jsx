@@ -1,9 +1,9 @@
 import { NETFLIX_LOGO } from "../utils/Image";
-import GptMovieSuggestion from "./GptMovieSuggestion";
-import GptSearchBar from "./GptSearchBar";
+import MovieSuggestion from "./MovieSuggestion";
+import SearchBar from "./SearchBar";
 
 
-const GptSearch = () =>{
+const Search = () =>{
     return (
         <>
         <div className="fixed -z-20 "> 
@@ -11,11 +11,11 @@ const GptSearch = () =>{
             </div>
         <div className=""> 
             
-        <GptSearchBar/>
-        <GptMovieSuggestion/>
+        <SearchBar/>
+        <MovieSuggestion/>
         </div>
         </>
     )
 }
 
-export default GptSearch;
+export default Search;
